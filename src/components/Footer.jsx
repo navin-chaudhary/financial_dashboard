@@ -2,14 +2,14 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-white border-t border-gray-200 mt-8">
-      <div className="max-w-7xl mx-auto px-6 py-8">
+    <footer className="mt-8 bg-white border-t border-gray-200">
+      <div className="px-6 py-8 mx-auto max-w-7xl">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+        <div className="grid grid-cols-1 gap-8 mb-6 md:grid-cols-3">
           {/* Company Info */}
           <div>
-            <h3 className="font-bold text-gray-900 mb-3">Sterling Real Estate Group</h3>
-            <p className="text-gray-600 text-sm mb-2">
+            <h3 className="mb-3 font-bold text-gray-900">Sterling Real Estate Group</h3>
+            <p className="mb-2 text-sm text-gray-600">
               Leading real estate brokerage providing exceptional service and results.
             </p>
             <div className="text-sm text-gray-500">
@@ -21,7 +21,7 @@ const Footer = () => {
 
           {/* Quick Stats */}
           <div>
-            <h3 className="font-bold text-gray-900 mb-3">Quick Stats</h3>
+            <h3 className="mb-3 font-bold text-gray-900">Quick Stats</h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
                 <span className="text-gray-600">Active Agents:</span>
@@ -44,48 +44,31 @@ const Footer = () => {
 
           {/* Technology Info */}
           <div>
-            <h3 className="font-bold text-gray-900 mb-3">Dashboard Technology</h3>
-            <div className="flex items-center space-x-4 mb-3">
-              <div className="bg-blue-100 p-2 rounded">
-                <span className="text-blue-600 font-bold text-sm">React</span>
+            <h3 className="mb-3 font-bold text-gray-900">Dashboard Technology</h3>
+            <div className="flex items-center mb-3 space-x-4">
+              <div className="p-2 bg-blue-100 rounded">
+                <span className="text-sm font-bold text-blue-600">React</span>
               </div>
-              <div className="bg-cyan-100 p-2 rounded">
-                <span className="text-cyan-600 font-bold text-sm">Tailwind CSS</span>
+              <div className="p-2 rounded bg-cyan-100">
+                <span className="text-sm font-bold text-cyan-600">Tailwind CSS</span>
               </div>
             </div>
-            <p className="text-gray-600 text-sm">
+            <p className="text-sm text-gray-600">
               Interactive financial dashboard with real-time data editing and export capabilities.
             </p>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-200 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-gray-500 text-sm mb-4 md:mb-0">
+        <div className="flex flex-col items-center justify-between pt-6 border-t border-gray-200 md:flex-row">
+          <div className="mb-4 text-sm text-gray-500 md:mb-0">
             © 2024 Sterling Real Estate Group. All rights reserved.
-          </div>
-          
-          {/* QR Code Placeholder (like in the PDF) */}
-          <div className="flex items-center space-x-4">
-            <div className="text-gray-500 text-sm">Scan for mobile access:</div>
-            <div className="w-16 h-16 bg-gray-200 border-2 border-gray-300 rounded flex items-center justify-center">
-              <div className="grid grid-cols-4 gap-px">
-                {Array.from({ length: 16 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className={`w-1 h-1 ${
-                      Math.random() > 0.5 ? 'bg-gray-800' : 'bg-gray-200'
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
           </div>
         </div>
 
         {/* Disclaimer */}
-        <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-          <p className="text-xs text-gray-500 text-center">
+        <div className="p-4 mt-6 rounded-lg bg-gray-50">
+          <p className="text-xs text-center text-gray-500">
             This dashboard contains simulated financial data for demonstration purposes. 
             All values are editable and can be saved, exported, or reset. 
             Data is stored locally in your browser and can be exported as JSON for backup.
