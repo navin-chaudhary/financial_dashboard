@@ -1,25 +1,54 @@
-# Financial Dashboard - Sterling Real Estate Group
+# Brokerage Dashboard - Sterling Real Estate Group
 
-A React + Tailwind CSS application that replicates a financial statement dashboard with interactive editing capabilities, data persistence, and export/import functionality.
+A comprehensive React-based real estate brokerage dashboard application built with Tailwind CSS. This multi-page dashboard provides detailed insights into deal analytics, agent performance, market metrics, and property distribution with interactive editing capabilities and data management features.
 
 ## Features
 
-- 📊 **Interactive Financial Dashboard** - Replicates the PDF layout with professional styling
-- ✏️ **Inline Editing** - Click any number to edit it directly
-- 💾 **Data Persistence** - Automatically saves to localStorage
-- 📥 **Import/Export** - Download data as JSON and import it back
-- 🔄 **Reset Functionality** - Restore default values
-- 📱 **Responsive Design** - Works on desktop, tablet, and mobile
-- 🎨 **Modern UI** - Clean design with Tailwind CSS
+- 📊 **Multi-Page Brokerage Dashboard** - Three comprehensive pages covering deals, agents, and market analysis
+- 💰 **Deal Analytics** - Detailed breakdown of closed, pending, and active deals with volume analysis
+- 👥 **Agent Performance Tracking** - Monitor agent metrics, rankings, and commission data
+- 📈 **Market Analysis** - Property listing status, price ratios, and market trends
+- 🎯 **Interactive Charts** - Pie charts with tooltips showing deal distribution and agent performance
+- ✏️ **Inline Editing** - Click any editable value to modify it directly
+- 💾 **Data Persistence** - Automatic localStorage integration
+- 📥 **Import/Export** - Download/upload data as JSON files
+- 🔄 **Reset Functionality** - Restore default values with confirmation
+- 📱 **Responsive Design** - Optimized for desktop, tablet, and mobile devices
+- 🎨 **Modern UI** - Professional design with gradient effects and hover animations
+- 🔄 **Pagination** - Navigate between dashboard pages seamlessly
+
+## Dashboard Pages
+
+### Page 1: Deal Overview & Performance
+- **Closed Deal Summary** - Total deal value and allocation information
+- **Deal Type Metrics** - Sell side, dual side, buy side, and closed deal counts
+- **Pending & Active Deals** - Current pipeline with detailed breakdowns
+- **Price Analysis** - Price ranges and average sold prices
+- **Visual Analytics** - Pie charts for deal volume by type and top agent performance
+
+### Page 2: Agents & Market Performance
+- **Agent Statistics** - Total, active, and inactive agent counts
+- **Office Information** - Number of physical locations
+- **Market Performance** - Sold-to-list price ratios and days on market metrics
+- **Revenue Analytics** - Estimated organizational revenue with breakdown
+- **Market Ranking** - Company's position in the market (TTM basis)
+
+### Page 3: Market Analysis & Distribution
+- **Market Overview** - Average listing prices and active agent counts
+- **Property Status** - Closed, pending, active property counts
+- **Deal Type Distribution** - Single vs multiple agent deal percentages
+- **Property Listing Status** - Interactive donut chart showing distribution
+- **Market Metrics** - Median prices and gross commission data
 
 ## Components
 
-- **Header** - Dashboard title and key metrics
-- **IncomeStatement** - Current/previous quarter financial tables
-- **FinancialRatios** - Market analysis, charts, and KPIs
-- **DataManagementButtons** - Save, export, import, and reset controls
-- **Footer** - Company information and technology details
-- **EditableNumber** - Reusable component for inline number editing
+- **BrokerageDashboard** - Main dashboard component with multi-page layout
+- **EditableValue** - Reusable component for inline value editing
+- **DataManagementPanel** - Comprehensive data control panel
+- **DashboardDataContext** - Global state management with localStorage integration
+- **MetricCard** - Reusable UI component for displaying key metrics
+- **CustomPieChart** - Interactive chart component with tooltips and animations
+- **Section** - Layout wrapper for dashboard sections
 
 ## Quick Start
 
@@ -52,41 +81,68 @@ A React + Tailwind CSS application that replicates a financial statement dashboa
 
 ## Usage
 
-### Editing Numbers
-- Click on any number in the dashboard to edit it
-- Press Enter to save or Escape to cancel
-- Changes are automatically applied to the UI
+### Navigation
+- Use the **Previous/Next** buttons at the bottom to navigate between dashboard pages
+- **Page 1**: Deal overview and performance analytics
+- **Page 2**: Agent statistics and market performance
+- **Page 3**: Market analysis and property distribution
+
+### Editing Values
+- Click on any **highlighted/editable value** to modify it directly
+- Press **Enter** to save changes or **Escape** to cancel
+- Changes are automatically reflected in charts and related calculations
+- Most numeric values, text fields, and percentages are editable
+
+### Interactive Charts
+- **Hover** over chart segments to view detailed tooltips
+- Charts automatically update when underlying data is modified
+- **Pie charts** show both percentages and actual values
+- **Donut charts** include center content for additional context
 
 ### Data Management
-- **Save**: Store current values to localStorage
-- **Export JSON**: Download all data as a JSON file
-- **Import JSON**: Upload a previously exported JSON file
-- **Reset**: Restore all values to defaults
+- **💾 Save**: Store current values to browser localStorage for persistence
+- **📥 Export JSON**: Download complete dashboard data as a timestamped JSON file
+- **📤 Import JSON**: Upload a previously exported JSON file to restore data
+- **🔄 Reset**: Restore all values to default settings (with confirmation prompt)
 
 ### Data Structure
-The application manages the following data categories:
-- Header metrics (revenue, commission, profit, margin)
-- Income statements (current and previous quarter)
-- Top offices performance
-- Market analysis metrics
-- Property distribution percentages
-- Key performance indicators
-- Awards and recognition
+The application manages comprehensive brokerage data across three main categories:
+
+**Page 1 - Deal Analytics:**
+- Closed deal values and allocation information
+- Deal type metrics (sell side, dual side, buy side counts)
+- Pending and active deal pipelines
+- Price range analysis and averages
+- Agent performance rankings with volume data
+
+**Page 2 - Agent & Office Performance:**
+- Agent statistics (total, active, inactive counts)
+- Office locations and organizational structure
+- Market performance ratios and timing metrics
+- Revenue calculations and sales frequency
+- Market ranking and competitive positioning
+
+**Page 3 - Market Analysis:**
+- Listing price averages and market trends
+- Property status distribution (closed, pending, active)
+- Deal type percentages and agent collaboration metrics
+- Market median values and commission totals
 
 ## Project Structure
 
 ```
 src/
 ├── components/
-│   ├── Header.jsx                 # Dashboard header with key metrics
-│   ├── IncomeStatement.jsx        # Financial tables and office performance
-│   ├── FinancialRatios.jsx        # Charts, ratios, and additional metrics
-│   ├── DataManagementButtons.jsx  # Data controls (save/export/import/reset)
-│   ├── Footer.jsx                 # Footer with company info
-│   └── EditableNumber.jsx         # Reusable inline editing component
+│   ├── BrokerageDashboard.jsx     # Main dashboard with 3 pages and interactive charts
+│   ├── EditableValue.jsx          # Reusable inline editing component
+│   └── DataManagementPanel.jsx    # Data controls (save/export/import/reset)
 ├── context/
-│   └── DataContext.jsx            # Global state management and data operations
+│   ├── DashboardDataContext.jsx   # Global state management and data operations
+│   └── DataContext.jsx            # Legacy context (kept for compatibility)
+├── assets/
+│   └── react.svg                  # React logo
 ├── App.jsx                        # Main application component
+├── main.jsx                       # Application entry point
 └── index.css                      # Tailwind CSS imports and custom styles
 ```
 
@@ -99,12 +155,15 @@ src/
 
 ## Technologies Used
 
-- **React 18** - UI framework
-- **Vite** - Build tool and dev server
-- **Tailwind CSS** - Utility-first CSS framework
-- **Context API** - State management
-- **localStorage** - Data persistence
-- **File API** - JSON import/export
+- **React 18** - UI framework with hooks and context
+- **Vite** - Fast build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework for styling
+- **Recharts** - Chart library for interactive data visualization
+- **Context API** - Global state management for dashboard data
+- **localStorage** - Browser-based data persistence
+- **File API** - JSON file import/export functionality
+- **PostCSS** - CSS processing for Tailwind
+- **ESLint** - Code linting and quality assurance
 
 ## Browser Compatibility
 
@@ -115,41 +174,79 @@ src/
 
 ## Data Format
 
-Exported JSON files contain all dashboard data in the following structure:
+Exported JSON files contain all dashboard data organized by pages:
 
 ```json
 {
-  "grossRevenue": 46000000,
-  "avgCommission": 8500,
-  "netProfit": 12500000,
-  "netProfitMargin": 27.17,
-  "currentQuarter": {
-    "revenue": 46000000,
-    "cogs": 21000000,
-    "operatingExpenses": 12500000,
-    "netIncome": 12500000
+  "page1": {
+    "closedDeal": {
+      "value": "69M",
+      "allocation": "100% allocated to Primary Agent"
+    },
+    "metrics": {
+      "sellSide": 67,
+      "dualSide": 38,
+      "buySide": 37,
+      "closedDeals": 142
+    },
+    "chartData": {
+      "volumeByDealType": [...],
+      "topAgents": [...]
+    }
   },
-  "previousQuarter": { ... },
-  "topOffices": [ ... ],
-  "marketAnalysis": { ... },
-  "propertyDistribution": { ... },
-  "kpi": { ... },
-  "awards": { ... }
+  "page2": {
+    "agentsOffices": {
+      "totalAgents": 32,
+      "activeAgents": 32,
+      "inactiveAgents": 0,
+      "offices": 1
+    },
+    "revenue": {
+      "total": "213K",
+      "monthlySales": 18,
+      "weeklySales": 4
+    },
+    "marketRank": 18
+  },
+  "page3": {
+    "averageListingPrice": 379,
+    "activeAgents": 2504,
+    "marketStatus": {...},
+    "listingStatus": [...]
+  }
 }
 ```
 
 ## Customization
 
 ### Adding New Editable Fields
-1. Add the field to `defaultData` in `DataContext.jsx`
-2. Use the `EditableNumber` component in your JSX:
+1. Add the field to `defaultData` in `DashboardDataContext.jsx`
+2. Use the `EditableValue` component in your JSX:
    ```jsx
-   <EditableNumber 
+   <EditableValue 
      path="your.field.path" 
-     format="currency|percentage|number" 
-     decimals={2} 
+     defaultValue="initial value"
+     prefix="$" 
+     suffix="%" 
+     type="text|number" 
+     className="custom-styling"
    />
    ```
+
+### Adding New Dashboard Pages
+1. Add new page data structure to `defaultData` in `DashboardDataContext.jsx`
+2. Create a new render function (e.g., `renderPage4()`) in `BrokerageDashboard.jsx`
+3. Update the pagination logic to include the new page
+4. Add conditional rendering in the main component return statement
+
+### Customizing Charts
+1. Modify chart data in the `defaultData` structure
+2. Adjust `CustomPieChart` component properties:
+   - `size`: Chart dimensions
+   - `colors`: Array of hex colors for segments
+   - `showCenter`: Boolean for donut charts
+   - `showLabels`: Boolean for displaying labels
+   - `showValues`: Boolean for displaying values instead of percentages
 
 ### Styling
 - Modify `tailwind.config.js` for theme customization
@@ -158,34 +255,86 @@ Exported JSON files contain all dashboard data in the following structure:
 
 ## Troubleshooting
 
-**Tailwind CSS PostCSS Error:**
-- Fixed by using Tailwind CSS 3.x instead of 4.x for better compatibility
-- If you encounter PostCSS plugin errors, ensure you're using compatible versions
+**Dashboard Pages Not Loading:**
+- Check browser console for JavaScript errors
+- Verify all components are properly imported
+- Ensure React and dependencies are correctly installed
 
-**Numbers not saving:**
-- Check browser console for errors
-- Ensure localStorage is enabled
-- Try refreshing the page
+**Editable Values Not Saving:**
+- Check browser console for errors in `DashboardDataContext`
+- Ensure localStorage is enabled in your browser
+- Verify the path parameter matches the data structure
+- Try refreshing the page to reload saved data
 
-**Import not working:**
-- Verify JSON file format matches expected structure
-- Check file size (browser limits apply)
-- Ensure valid JSON syntax
+**Charts Not Displaying:**
+- Ensure Recharts library is properly installed: `npm install recharts`
+- Check data format matches expected chart data structure
+- Verify chart containers have proper dimensions
+- Look for console errors related to chart rendering
 
-**Styling issues:**
-- Clear browser cache
-- Check Tailwind CSS is loaded properly
-- Verify responsive breakpoints
+**Import/Export Not Working:**
+- Verify JSON file format matches the three-page data structure
+- Check file size limits (most browsers support files up to 100MB)
+- Ensure valid JSON syntax with proper page1, page2, page3 structure
+- Try exporting first to see the expected format
 
-**Development server issues:**
-- Run `npm run build` first to check for compilation errors
+**Styling Issues:**
+- Clear browser cache and hard refresh (Ctrl+F5)
+- Check Tailwind CSS is loading: look for utility classes in browser dev tools
+- Verify PostCSS configuration in `postcss.config.js`
+- Ensure all Tailwind directives are in `src/index.css`
+
+**Performance Issues:**
+- Large datasets may slow chart rendering - consider data pagination
+- Multiple page renders can impact performance - optimize with React.memo if needed
+- Clear localStorage if it becomes too large: `localStorage.clear()`
+
+**Development Server Issues:**
+- Run `npm run build` to check for compilation errors
 - Clear npm cache: `npm cache clean --force`
 - Delete node_modules and reinstall: `rm -rf node_modules && npm install`
+- Check Node.js version compatibility (14+ required)
+
+## Key Features Summary
+
+### 📊 Comprehensive Analytics
+- **Deal Pipeline Management**: Track closed, pending, and active deals with detailed breakdowns
+- **Agent Performance**: Monitor individual agent metrics and rankings
+- **Market Intelligence**: Analyze property trends, pricing, and market positioning
+
+### 🎯 Interactive Experience
+- **Real-time Editing**: Click-to-edit functionality for all key metrics
+- **Dynamic Charts**: Interactive pie and donut charts with hover tooltips
+- **Multi-page Navigation**: Seamless page transitions with pagination controls
+
+### 💾 Data Management
+- **Persistent Storage**: Automatic localStorage integration
+- **Import/Export**: Full data backup and restore capabilities
+- **Reset Function**: Quick return to default values with safety confirmation
+
+### 🎨 Professional Design
+- **Responsive Layout**: Optimized for all device sizes
+- **Modern UI**: Gradient effects, hover animations, and clean typography
+- **Accessibility**: Proper contrast ratios and semantic HTML structure
+
+## Contributing
+
+This is a demonstration project. If you'd like to contribute:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/new-feature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature/new-feature`)
+5. Create a Pull Request
 
 ## License
 
-This project is for demonstration purposes. Feel free to use and modify as needed.
+This project is for demonstration purposes. Feel free to use and modify as needed for your own brokerage dashboard requirements.
 
 ## Support
 
-For questions or issues, please check the browser console for error messages and ensure all dependencies are properly installed.
+For questions or issues:
+1. Check the browser console for error messages
+2. Ensure all dependencies are properly installed (`npm install`)
+3. Verify Node.js version compatibility (14+ required)
+4. Review the troubleshooting section above for common solutions
