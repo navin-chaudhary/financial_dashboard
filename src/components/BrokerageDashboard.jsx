@@ -231,30 +231,57 @@ const BrokerageDashboard = () => {
                             <span className="mr-2">⏳</span>
                             <span className="font-medium">Pending</span>
                         </div>
-                        <div className="text-2xl font-bold">$103M</div>
+                        <div className="text-2xl font-bold">
+                            $<EditableValue 
+                                path="page1.pending.value" 
+                                defaultValue="103M"
+                                className="text-2xl font-bold"
+                            />
+                        </div>
                         <div className="mb-3 text-xs text-gray-600">(Primary Agent)</div>
                         </div>
                         <div className="grid grid-cols-3 text-sm">
-                            <div className="border-r border-r-2 border-gray-400">
+                            <div className="border-r-2 border-gray-400">
                                 <div className="flex items-center justify-center gap-1 p-3">
                                     <span>🏠</span>
                                     <span>Sell Side</span>
                                 </div>
-                                <div className="font-bold">78</div>
+                                <div className="font-bold">
+                                    <EditableValue 
+                                        path="page1.pending.sellSide" 
+                                        defaultValue={78}
+                                        type="number"
+                                        className="font-bold"
+                                    />
+                                </div>
                             </div>
-                            <div className="border-r border-r-2 border-gray-400">
+                            <div className="border-r-2 border-gray-400">
                                 <div className="flex items-center justify-center gap-1 p-3">
                                     <span>⚖️</span>
                                     <span>Dual</span>
                                 </div>
-                                <div className="font-bold">28</div>
+                                <div className="font-bold">
+                                    <EditableValue 
+                                        path="page1.pending.dual" 
+                                        defaultValue={28}
+                                        type="number"
+                                        className="font-bold"
+                                    />
+                                </div>
                             </div>
                             <div>
                                 <div className="flex items-center justify-center gap-1 p-3">
                                     <span>🔑</span>
                                     <span>Buy Side</span>
                                 </div>
-                                <div className="font-bold">19</div>
+                                <div className="font-bold">
+                                    <EditableValue 
+                                        path="page1.pending.buySide" 
+                                        defaultValue={19}
+                                        type="number"
+                                        className="font-bold"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -265,23 +292,48 @@ const BrokerageDashboard = () => {
                             <span className="mr-2">📍</span>
                             <span className="font-medium">Active</span>
                         </div>
-                        <div className="text-2xl font-bold">$46M</div>
+                        <div className="text-2xl font-bold">
+                            $<EditableValue 
+                                path="page1.active.value" 
+                                defaultValue="46M"
+                                className="text-2xl font-bold"
+                            />
+                        </div>
                         <div className="mb-3 text-xs text-gray-600">(Primary Agent)</div>
                         </div>
-                        <div className="text-3xl font-bold">71</div>
+                        <div className="text-3xl font-bold">
+                            <EditableValue 
+                                path="page1.active.total" 
+                                defaultValue={71}
+                                type="number"
+                                className="text-3xl font-bold"
+                            />
+                        </div>
                     </div>
                 </div>
 
                 {/* Price Range and Average */}
                 <div className="grid grid-cols-2 gap-6 mb-6 ">
-                    <MetricCard icon="💎" label="Range" value="$1.7M - $100K" className="flex flex-col items-center text-center border-2 border-gray-400" />
-                    <MetricCard icon="📊" label="Avg. Sold Price" value="$517K" className="flex flex-col items-center text-center border-2 border-gray-400" />
+                    <MetricCard 
+                        icon="💎" 
+                        label="Range" 
+                        value={data.page1.priceRange.range} 
+                        path="page1.priceRange.range"
+                        className="flex flex-col items-center text-center border-2 border-gray-400" 
+                    />
+                    <MetricCard 
+                        icon="📊" 
+                        label="Avg. Sold Price" 
+                        value={data.page1.priceRange.avgSoldPrice} 
+                        path="page1.priceRange.avgSoldPrice"
+                        className="flex flex-col items-center text-center border-2 border-gray-400" 
+                    />
                 </div>
             </Section>
 
             {/* Charts Section */}
             <Section className='border-2 border-gray-400'>
-                <h4 className="mb-2 text-2xl text-3xl font-medium text-center">Total Closed Deals Analysis</h4>
+                <h4 className="mb-2 text-3xl font-medium text-center">Total Closed Deals Analysis</h4>
                 <div className="grid grid-cols-2 gap-12">
                     <div>
                         <h4 className="text-2xl font-medium text-center">Volume($) by Deal Type</h4>
@@ -302,7 +354,14 @@ const BrokerageDashboard = () => {
                             />
                         </div>
                         <div className="mt-4 text-lg ">
-                            <div># Closed Deals <span className="font-bold">142</span></div>
+                            <div># Closed Deals <span className="font-bold">
+                                <EditableValue 
+                                    path="page1.totalClosedDeals" 
+                                    defaultValue={142}
+                                    type="number"
+                                    className="font-bold"
+                                />
+                            </span></div>
                         </div>
                     </div>
                 </div>
@@ -317,25 +376,33 @@ const BrokerageDashboard = () => {
                 <div className="grid grid-cols-4 gap-6">
                     <MetricCard 
                         label="Current Total Agents" 
-                        value="32" 
+                        value={data.page2.agentsOffices.totalAgents} 
+                        path="page2.agentsOffices.totalAgents"
+                        type="number"
                         className="flex flex-col items-center text-center transition-shadow duration-200 border-2 border-gray-300 hover:shadow-lg"
                         subtitle="All registered agents" 
                     />
                     <MetricCard 
                         label="Current Active Agents" 
-                        value="32" 
+                        value={data.page2.agentsOffices.activeAgents} 
+                        path="page2.agentsOffices.activeAgents"
+                        type="number"
                         className="flex flex-col items-center text-center transition-shadow duration-200 border-2 border-gray-300 hover:shadow-lg"
                         subtitle="Agents with recent activity"
                     />
                     <MetricCard 
                         label="Current Inactive Agents" 
-                        value="0" 
+                        value={data.page2.agentsOffices.inactiveAgents} 
+                        path="page2.agentsOffices.inactiveAgents"
+                        type="number"
                         className="flex flex-col items-center text-center transition-shadow duration-200 border-2 border-gray-300 hover:shadow-lg"
                         subtitle="No recent activity"
                     />
                     <MetricCard 
                         label="# Offices" 
-                        value="1" 
+                        value={data.page2.agentsOffices.offices} 
+                        path="page2.agentsOffices.offices"
+                        type="number"
                         className="flex flex-col items-center text-center transition-shadow duration-200 border-2 border-gray-300 hover:shadow-lg"
                         subtitle="Physical locations"
                     />
@@ -349,17 +416,41 @@ const BrokerageDashboard = () => {
                         <div className="p-4 bg-white border-2 border-gray-300 rounded-lg">
                             <h1 className="mb-2 text-lg font-medium text-gray-800">All Sides</h1>
                             <div className="mb-2 text-sm text-gray-600">Year over Year</div>
-                            <div className="text-2xl font-bold text-green-600">+5.6%</div>
+                            <div className="text-2xl font-bold text-green-600">
+                                +<EditableValue 
+                                    path="page2.priceRatios.allSides" 
+                                    defaultValue={5.6}
+                                    type="number"
+                                    suffix="%"
+                                    className="text-2xl font-bold text-green-600"
+                                />
+                            </div>
                         </div>
                         <div className="p-4 bg-white border-2 border-gray-300 rounded-lg">
                             <div className="mb-2 text-lg font-medium text-gray-800">Buy Side</div>
                             <div className="mb-2 text-sm text-gray-600">Previous vs Current</div>
-                            <div className="text-2xl font-bold text-green-600">+4.9%</div>
+                            <div className="text-2xl font-bold text-green-600">
+                                +<EditableValue 
+                                    path="page2.priceRatios.buyPrevCurrent" 
+                                    defaultValue={4.9}
+                                    type="number"
+                                    suffix="%"
+                                    className="text-2xl font-bold text-green-600"
+                                />
+                            </div>
                         </div>
                         <div className="p-4 bg-white border-2 border-gray-300 rounded-lg">
                             <div className="mb-2 text-lg font-medium text-gray-800">Buy Side</div>
                             <div className="mb-2 text-sm text-gray-600">Target vs Actual</div>
-                            <div className="text-2xl font-bold text-green-600">+6.0%</div>
+                            <div className="text-2xl font-bold text-green-600">
+                                +<EditableValue 
+                                    path="page2.priceRatios.buyTargetActual" 
+                                    defaultValue={6.0}
+                                    type="number"
+                                    suffix="%"
+                                    className="text-2xl font-bold text-green-600"
+                                />
+                            </div>
                         </div>
                     </div>
                 </Section>
@@ -368,19 +459,40 @@ const BrokerageDashboard = () => {
                         <div className="p-4 bg-white border-2 border-gray-300 rounded-lg">
                             <div className="mb-2 text-lg font-medium text-gray-800">All Sides</div>
                             <div className="mb-2 text-sm text-gray-600">Current</div>
-                            <div className="text-2xl font-bold text-blue-600">175</div>
+                            <div className="text-2xl font-bold text-blue-600">
+                                <EditableValue 
+                                    path="page2.daysOnMarket.allSides" 
+                                    defaultValue={175}
+                                    type="number"
+                                    className="text-2xl font-bold text-blue-600"
+                                />
+                            </div>
                             <div className="text-sm text-gray-500">days</div>
                         </div>
                         <div className="p-4 bg-white border-2 border-gray-300 rounded-lg">
                             <div className="mb-2 text-lg font-medium text-gray-800">Buy Side</div>
                             <div className="mb-2 text-sm text-gray-600">Previous vs Current</div>
-                            <div className="text-2xl font-bold text-blue-600">134</div>
+                            <div className="text-2xl font-bold text-blue-600">
+                                <EditableValue 
+                                    path="page2.daysOnMarket.buyPrevCurrent" 
+                                    defaultValue={134}
+                                    type="number"
+                                    className="text-2xl font-bold text-blue-600"
+                                />
+                            </div>
                             <div className="text-sm text-gray-500">days</div>
                         </div>
                         <div className="p-4 bg-white border-2 border-gray-300 rounded-lg">
                             <div className="mb-2 text-lg font-medium text-gray-800">Buy Side</div>
                             <div className="mb-2 text-sm text-gray-600">Target vs Actual</div>
-                            <div className="text-2xl font-bold text-blue-600">200</div>
+                            <div className="text-2xl font-bold text-blue-600">
+                                <EditableValue 
+                                    path="page2.daysOnMarket.buyTargetActual" 
+                                    defaultValue={200}
+                                    type="number"
+                                    className="text-2xl font-bold text-blue-600"
+                                />
+                            </div>
                             <div className="text-sm text-gray-500">days</div>
                         </div>
                     </div>
@@ -391,32 +503,55 @@ const BrokerageDashboard = () => {
             <Section title={<span className="text-xl font-bold">Estimated Total Org. Revenue</span>} className="transition-shadow duration-200 border-2 border-gray-400 bg-gray-50 hover:shadow-lg">
                 <div className="mb-6 text-center">
                     <div className="inline-block p-2 mb-2 text-sm text-gray-600 bg-white border border-gray-300 rounded-lg">
-                        <span className="font-medium">Revenue Share:</span> 5% overhead + 2.5% brokerage share
+                        <span className="font-medium">Revenue Share:</span> 
+                        <EditableValue 
+                            path="page2.revenue.overhead" 
+                            defaultValue="5%"
+                            className="text-sm text-gray-600"
+                        /> overhead + 
+                        <EditableValue 
+                            path="page2.revenue.brokerage" 
+                            defaultValue="2.5%"
+                            className="text-sm text-gray-600"
+                        /> brokerage share
                     </div>
-                    <div className="mt-3 text-4xl font-bold text-green-600">$213K</div>
+                    <div className="mt-3 text-4xl font-bold text-green-600">
+                        $<EditableValue 
+                            path="page2.revenue.total" 
+                            defaultValue="213K"
+                            className="text-4xl font-bold text-green-600"
+                        />
+                    </div>
                 </div>
                 <div className="grid grid-cols-4 gap-6">
                     <MetricCard 
                         label="Monthly Sales" 
-                        value="18" 
+                        value={data.page2.revenue.monthlySales} 
+                        path="page2.revenue.monthlySales"
+                        type="number"
                         icon="📅"
                         className="text-center transition-colors bg-white border-2 border-gray-300 hover:border-gray-400" 
                     />
                     <MetricCard 
                         label="Weekly Sales" 
-                        value="4" 
+                        value={data.page2.revenue.weeklySales} 
+                        path="page2.revenue.weeklySales"
+                        type="number"
                         icon="📊"
                         className="text-center transition-colors bg-white border-2 border-gray-300 hover:border-gray-400" 
                     />
                     <MetricCard 
                         label="Daily Sales" 
-                        value="~1" 
+                        value={data.page2.revenue.dailySales} 
+                        path="page2.revenue.dailySales"
                         icon="📈"
                         className="text-center transition-colors bg-white border-2 border-gray-300 hover:border-gray-400" 
                     />
                     <MetricCard 
                         label="Deals/Agent" 
-                        value="5" 
+                        value={data.page2.revenue.dealsPerAgent} 
+                        path="page2.revenue.dealsPerAgent"
+                        type="number"
                         icon="👥"
                         className="text-center transition-colors bg-white border-2 border-gray-300 hover:border-gray-400" 
                     />
@@ -425,11 +560,18 @@ const BrokerageDashboard = () => {
 
             {/* Market Rank */}
             <Section className="text-2xl text-center border-2 border-gray-400">
-                <h4 className="mb-2 text-2xl text-3xl font-medium text-center">Market Rank (TTM*)</h4>
+                <h4 className="mb-2 text-3xl font-medium text-center">Market Rank (TTM*)</h4>
                 <div className="mb-6 text-2xl text-gray-600">(Your Company's Rank)</div>
                 <div className="relative inline-block">
                     <div className="flex items-center justify-center w-32 h-32 mx-auto mb-4 border-8 border-yellow-300 rounded-full shadow-lg bg-gradient-to-r from-yellow-400 to-yellow-600">
-                        <div className="text-4xl font-bold text-white">18</div>
+                        <div className="text-4xl font-bold text-white">
+                            <EditableValue 
+                                path="page2.marketRank" 
+                                defaultValue={18}
+                                type="number"
+                                className="text-4xl font-bold text-white"
+                            />
+                        </div>
                     </div>
                     <div className="absolute transform -translate-x-1/2 -bottom-2 left-1/2">
                         <div className="px-4 py-2 text-sm font-semibold text-white bg-yellow-600 rounded-full">
@@ -451,7 +593,14 @@ const BrokerageDashboard = () => {
                         <h3 className="text-xl font-semibold">Average Listing Price</h3>
                     </div>
                     <div className="mb-3 text-sm text-gray-600">Per Square Foot</div>
-                    <div className="text-4xl font-bold text-blue-600">$379</div>
+                    <div className="text-4xl font-bold text-blue-600">
+                        $<EditableValue 
+                            path="page3.averageListingPrice" 
+                            defaultValue={379}
+                            type="number"
+                            className="text-4xl font-bold text-blue-600"
+                        />
+                    </div>
                 </Section>
                 <Section className="text-center transition-all duration-300 transform border-2 border-gray-300 bg-gradient-to-br from-green-50 to-white hover:border-green-400 hover:-translate-y-1">
                     <div className="flex items-center justify-center mb-3">
@@ -459,7 +608,14 @@ const BrokerageDashboard = () => {
                         <h3 className="text-xl font-semibold">Active Agents</h3>
                     </div>
                     <div className="mb-3 text-sm text-gray-600">(Minimum 1 Deal Completed)</div>
-                    <div className="text-4xl font-bold text-green-600">2,504</div>
+                    <div className="text-4xl font-bold text-green-600">
+                        <EditableValue 
+                            path="page3.activeAgents" 
+                            defaultValue={2504}
+                            type="number"
+                            className="text-4xl font-bold text-green-600"
+                        />
+                    </div>
                 </Section>
             </div>
 
@@ -468,19 +624,25 @@ const BrokerageDashboard = () => {
                 <MetricCard 
                     icon="📌" 
                     label="# Closed" 
-                    value="6,573" 
+                    value={data.page3.marketStatus.closed} 
+                    path="page3.marketStatus.closed"
+                    type="number"
                     className="text-center transition-all duration-300 transform border-2 border-gray-300 shadow-sm bg-gradient-to-br from-blue-50 to-white hover:border-blue-400 hover:-translate-y-1 hover:shadow-md"
                 />
                 <MetricCard 
                     icon="🏆" 
                     label="# Pending" 
-                    value="3,215"
+                    value={data.page3.marketStatus.pending}
+                    path="page3.marketStatus.pending"
+                    type="number"
                     className="text-center transition-all duration-300 transform border-2 border-gray-300 shadow-sm bg-gradient-to-br from-green-50 to-white hover:border-green-400 hover:-translate-y-1 hover:shadow-md"
                 />
                 <MetricCard 
                     icon="📍" 
                     label="# Active" 
-                    value="3,606"
+                    value={data.page3.marketStatus.active}
+                    path="page3.marketStatus.active"
+                    type="number"
                     className="text-center transition-all duration-300 transform border-2 border-gray-300 shadow-sm bg-gradient-to-br from-yellow-50 to-white hover:border-yellow-400 hover:-translate-y-1 hover:shadow-md"
                 />
                 <div className="p-4 text-center transition-all duration-300 transform border-2 border-gray-300 rounded-lg shadow-sm bg-gradient-to-br from-purple-50 to-white hover:border-purple-400 hover:-translate-y-1 hover:shadow-md">
@@ -488,7 +650,13 @@ const BrokerageDashboard = () => {
                         <span className="mr-2 text-xl">💰</span>
                         <span className="text-sm font-medium">Property Price Market Median</span>
                     </div>
-                    <div className="text-2xl font-bold text-purple-600">$138K</div>
+                    <div className="text-2xl font-bold text-purple-600">
+                        $<EditableValue 
+                            path="page3.marketStatus.median" 
+                            defaultValue="138K"
+                            className="text-2xl font-bold text-purple-600"
+                        />
+                    </div>
                 </div>
                 <div className="p-4 text-center transition-all duration-300 transform border-2 border-gray-300 rounded-lg shadow-sm bg-gradient-to-br from-pink-50 to-white hover:border-pink-400 hover:-translate-y-1 hover:shadow-md">
                     <div className="flex items-center justify-center mb-2">
@@ -496,7 +664,13 @@ const BrokerageDashboard = () => {
                         <div className="text-sm font-medium text-gray-600">Gross Commission</div>
                     </div>
                     <div className="flex items-center justify-center mb-2">
-                        <div className="text-2xl font-bold text-pink-600">$245M</div>
+                        <div className="text-2xl font-bold text-pink-600">
+                            $<EditableValue 
+                                path="page3.marketStatus.grossCommission" 
+                                defaultValue="245M"
+                                className="text-2xl font-bold text-pink-600"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -506,38 +680,53 @@ const BrokerageDashboard = () => {
                 <MetricCard 
                     icon="👥"
                     label="Multiple-Agent Deal (Seller)" 
-                    value="14%" 
+                    value={data.page3.dealTypes.multiAgentSeller} 
+                    path="page3.dealTypes.multiAgentSeller"
+                    type="number"
+                    suffix="%"
                     className="text-center transition-all duration-300 transform border-2 border-gray-300 shadow-sm bg-gradient-to-br from-indigo-50 to-white hover:border-indigo-400 hover:-translate-y-1 hover:shadow-md"
                 />
                 <MetricCard 
                     icon="👥"
                     label="Multiple-Agent Deal (Buyer)" 
-                    value="6%" 
+                    value={data.page3.dealTypes.multiAgentBuyer} 
+                    path="page3.dealTypes.multiAgentBuyer"
+                    type="number"
+                    suffix="%"
                     className="text-center transition-all duration-300 transform border-2 border-gray-300 shadow-sm bg-gradient-to-br from-blue-50 to-white hover:border-blue-400 hover:-translate-y-1 hover:shadow-md"
                 />
                 <MetricCard 
                     icon="🤝"
                     label="Dual (Buyer, Seller)" 
-                    value="14%" 
+                    value={data.page3.dealTypes.dual} 
+                    path="page3.dealTypes.dual"
+                    type="number"
+                    suffix="%"
                     className="text-center transition-all duration-300 transform border-2 border-gray-300 shadow-sm bg-gradient-to-br from-purple-50 to-white hover:border-purple-400 hover:-translate-y-1 hover:shadow-md"
                 />
                 <MetricCard 
                     icon="👤"
                     label="Single Agent Deal (Seller)" 
-                    value="86%" 
+                    value={data.page3.dealTypes.singleAgentSeller} 
+                    path="page3.dealTypes.singleAgentSeller"
+                    type="number"
+                    suffix="%"
                     className="text-center transition-all duration-300 transform border-2 border-gray-300 shadow-sm bg-gradient-to-br from-green-50 to-white hover:border-green-400 hover:-translate-y-1 hover:shadow-md"
                 />
                 <MetricCard 
                     icon="👤"
                     label="Single Agent Deal (Buyer)" 
-                    value="94%" 
+                    value={data.page3.dealTypes.singleAgentBuyer} 
+                    path="page3.dealTypes.singleAgentBuyer"
+                    type="number"
+                    suffix="%"
                     className="text-center transition-all duration-300 transform border-2 border-gray-300 shadow-sm bg-gradient-to-br from-emerald-50 to-white hover:border-emerald-400 hover:-translate-y-1 hover:shadow-md"
                 />
             </div>
 
             {/* Property Listing Status Distribution */}
             <Section className='border-2 border-gray-400'>
-                <h4 className="mb-2 text-2xl text-3xl font-medium text-center">Distribution of Property Listing Status</h4>
+                <h4 className="mb-2 text-3xl font-medium text-center">Distribution of Property Listing Status</h4>
                 <CustomPieChart
                     size={350}
                     showCenter={true}
@@ -560,7 +749,7 @@ const BrokerageDashboard = () => {
             <div className="min-h-screen bg-gray-50">
                 <div className="px-4 py-6 mx-auto max-w-7xl">
                     {/* Header */}
-                    <h1 className="mb-2 text-2xl text-4xl font-bold text-center text-gray-800">
+                    <h1 className="mb-2 text-4xl font-bold text-center text-gray-800">
                         Brokerage Dashboard: <span className="text-orange-700">Sterling Real Estate Group</span>
                     </h1>
 

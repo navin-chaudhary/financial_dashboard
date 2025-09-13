@@ -37,6 +37,7 @@ const defaultData = {
             range: "$1.7M - $100K",
             avgSoldPrice: "$517K"
         },
+        totalClosedDeals: 142,
         chartData: {
             volumeByDealType: [
                 { name: "Buy Side", value: 37, percentage: 26 },
@@ -88,8 +89,7 @@ const defaultData = {
             pending: 3215,
             active: 3606,
             median: "138K",
-            avgDays: 71,
-            grossIncome: "245M"
+            grossCommission: "245M"
         },
         dealTypes: {
             multiAgentSeller: 14,
