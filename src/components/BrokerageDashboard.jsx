@@ -12,7 +12,7 @@ const BrokerageDashboard = () => {
     const MetricCard = ({ icon, label, value, subtitle, className = "", path, prefix = "", suffix = "", type = "text" }) => (
         <div className={`bg-white rounded-lg p-4 border ${className}`}>
             <div className="flex items-center mb-2">
-                <span className="text-xl mr-2">{icon}</span>
+                <span className="mr-2 text-xl">{icon}</span>
                 <span className="text-sm font-medium">{label}</span>
             </div>
             <div className="text-2xl font-bold">
@@ -35,7 +35,7 @@ const BrokerageDashboard = () => {
 
     const Section = ({ title, children, className = "bg-white" }) => (
         <div className={`${className} rounded-lg p-6 border mb-6`}>
-            {title && <h3 className="text-lg font-semibold mb-4 text-center">{title}</h3>}
+            {title && <h3 className="mb-4 text-lg font-semibold text-center">{title}</h3>}
             {children}
         </div>
     );
@@ -45,7 +45,7 @@ const BrokerageDashboard = () => {
             if (active && payload && payload.length) {
                 const data = payload[0].payload;
                 return (
-                    <div className="bg-white p-2 border rounded shadow-lg">
+                    <div className="p-2 bg-white border rounded shadow-lg">
                         <p className="font-semibold">{data.name}</p>
                         <p className="text-sm">{`Value: ${data.value}`}</p>
                         {data.percentage && <p className="text-sm">{`${data.percentage}%`}</p>}
@@ -127,7 +127,7 @@ const BrokerageDashboard = () => {
                                     <Cell 
                                         key={`cell-${index}`} 
                                         fill={colors[index % colors.length]}
-                                        className="hover:opacity-80 transition-opacity cursor-pointer"
+                                        className="transition-opacity cursor-pointer hover:opacity-80"
                                     />
                                 ))}
                             </Pie>
@@ -160,12 +160,12 @@ const BrokerageDashboard = () => {
     };
 
     const renderPage1 = () => (
-        <div className="rounded-lg border-0">
+        <div className="border-0 rounded-lg">
             {/* Header Section */}
-            <Section className="bg-gray-50 border-0 p-0 m-0">
-                    <div className="bg-gray-50 rounded-lg p-4 border-2 border-gray-400">
+            <Section className="p-0 m-0 border-0 bg-gray-50">
+                    <div className="p-4 border-2 border-gray-400 rounded-lg bg-gray-50">
                         <div className="flex items-center justify-center mb-1">
-                            <span className="text-yellow-500 text-xl mr-2">💰</span>
+                            <span className="mr-2 text-xl text-yellow-500">💰</span>
                             <span className="text-lg font-bold">Closed Deal</span>
                         </div>
                         <div className="text-center">
@@ -187,14 +187,14 @@ const BrokerageDashboard = () => {
                     </div>
 
                 {/* Metrics Row */}
-                <div className="grid grid-cols-4 mt-6 gap-4 mb-6">
+                <div className="grid grid-cols-4 gap-4 mt-6 mb-6">
                     <MetricCard 
                         icon="🏠" 
                         label="# Sell Side" 
                         value={data.page1.metrics.sellSide} 
                         path="page1.metrics.sellSide"
                         type="number"
-                        className="border-2 border-gray-400 text-center flex flex-col items-center" 
+                        className="flex flex-col items-center text-center border-2 border-gray-400" 
                     />
                     <MetricCard 
                         icon="🤝" 
@@ -202,7 +202,7 @@ const BrokerageDashboard = () => {
                         value={data.page1.metrics.dualSide} 
                         path="page1.metrics.dualSide"
                         type="number"
-                        className="border-2 border-gray-400 text-center flex flex-col items-center" 
+                        className="flex flex-col items-center text-center border-2 border-gray-400" 
                     />
                     <MetricCard 
                         icon="📈" 
@@ -210,7 +210,7 @@ const BrokerageDashboard = () => {
                         value={data.page1.metrics.buySide} 
                         path="page1.metrics.buySide"
                         type="number"
-                        className="border-2 border-gray-400 text-center flex flex-col items-center" 
+                        className="flex flex-col items-center text-center border-2 border-gray-400" 
                     />
                     <MetricCard 
                         icon="📌" 
@@ -218,24 +218,24 @@ const BrokerageDashboard = () => {
                         value={data.page1.metrics.closedDeals} 
                         path="page1.metrics.closedDeals"
                         type="number"
-                        className="border-2 border-gray-400 text-center flex flex-col items-center" 
+                        className="flex flex-col items-center text-center border-2 border-gray-400" 
                     />
                 </div>
 
                 {/* Pending and Active Section */}
-                <div className="grid grid-cols-2 mb-5 gap-4 rounded-lg overflow-hidden">
+                <div className="grid grid-cols-2 gap-4 mb-5 overflow-hidden rounded-lg">
                     {/* Pending Section */}
-                    <div className="border-r text-center bg-white border-2 border-gray-400 rounded-lg">
-                        <div className='border-b-2 p-2 border-gray-400'>
+                    <div className="text-center bg-white border-2 border-r border-gray-400 rounded-lg">
+                        <div className='p-2 border-b-2 border-gray-400'>
                         <div className="flex items-center justify-center">
                             <span className="mr-2">⏳</span>
                             <span className="font-medium">Pending</span>
                         </div>
                         <div className="text-2xl font-bold">$103M</div>
-                        <div className="text-xs text-gray-600 mb-3">(Primary Agent)</div>
+                        <div className="mb-3 text-xs text-gray-600">(Primary Agent)</div>
                         </div>
                         <div className="grid grid-cols-3 text-sm">
-                            <div className="border-r  border-r-2 border-gray-400">
+                            <div className="border-r border-r-2 border-gray-400">
                                 <div className="flex items-center justify-center gap-1 p-3">
                                     <span>🏠</span>
                                     <span>Sell Side</span>
@@ -259,14 +259,14 @@ const BrokerageDashboard = () => {
                         </div>
                     </div>
                     {/* Active Section */}
-                    <div className="p-4 pl-0 pr-0 text-center bg-white border-2 rounded-lg border-gray-400">
-                        <div className="border-b-2 border-gray-400 p-2">
+                    <div className="p-4 pl-0 pr-0 text-center bg-white border-2 border-gray-400 rounded-lg">
+                        <div className="p-2 border-b-2 border-gray-400">
                         <div className="flex items-center justify-center mb-1">
                             <span className="mr-2">📍</span>
                             <span className="font-medium">Active</span>
                         </div>
                         <div className="text-2xl font-bold">$46M</div>
-                        <div className="text-xs text-gray-600 mb-3">(Primary Agent)</div>
+                        <div className="mb-3 text-xs text-gray-600">(Primary Agent)</div>
                         </div>
                         <div className="text-3xl font-bold">71</div>
                     </div>
@@ -274,14 +274,14 @@ const BrokerageDashboard = () => {
 
                 {/* Price Range and Average */}
                 <div className="grid grid-cols-2 gap-6 mb-6 ">
-                    <MetricCard icon="💎" label="Range" value="$1.7M - $100K" className="text-center flex flex-col items-center border-2 border-gray-400" />
-                    <MetricCard icon="📊" label="Avg. Sold Price" value="$517K" className="text-center flex flex-col items-center border-2 border-gray-400" />
+                    <MetricCard icon="💎" label="Range" value="$1.7M - $100K" className="flex flex-col items-center text-center border-2 border-gray-400" />
+                    <MetricCard icon="📊" label="Avg. Sold Price" value="$517K" className="flex flex-col items-center text-center border-2 border-gray-400" />
                 </div>
             </Section>
 
             {/* Charts Section */}
             <Section className='border-2 border-gray-400'>
-                <h4 className="text-2xl font-medium text-center text-3xl mb-2">Total Closed Deals Analysis</h4>
+                <h4 className="mb-2 text-2xl text-3xl font-medium text-center">Total Closed Deals Analysis</h4>
                 <div className="grid grid-cols-2 gap-12">
                     <div>
                         <h4 className="text-2xl font-medium text-center">Volume($) by Deal Type</h4>
@@ -292,7 +292,7 @@ const BrokerageDashboard = () => {
                         />
                     </div>
                     <div>
-                        <h4 className="font-medium text-2xl text-center">Top Agents by Volume($)</h4>
+                        <h4 className="text-2xl font-medium text-center">Top Agents by Volume($)</h4>
                         <div className="relative">
                             <CustomPieChart
                                 size={280}
@@ -301,7 +301,7 @@ const BrokerageDashboard = () => {
                                 colors={["#3B82F6", "#06B6D4", "#10B981", "#F59E0B"]}
                             />
                         </div>
-                        <div className=" text-lg mt-4">
+                        <div className="mt-4 text-lg ">
                             <div># Closed Deals <span className="font-bold">142</span></div>
                         </div>
                     </div>
@@ -313,30 +313,30 @@ const BrokerageDashboard = () => {
     const renderPage2 = () => (
         <div className="space-y-6">
             {/* Agents & Offices */}
-            <Section title={<span className="font-bold text-2xl">Agents & Offices</span>} className="bg-gray-50 border-2 border-gray-400">
+            <Section title={<span className="text-2xl font-bold">Agents & Offices</span>} className="border-2 border-gray-400 bg-gray-50">
                 <div className="grid grid-cols-4 gap-6">
                     <MetricCard 
                         label="Current Total Agents" 
                         value="32" 
-                        className="text-center flex flex-col items-center hover:shadow-lg transition-shadow duration-200 border-2 border-gray-300"
+                        className="flex flex-col items-center text-center transition-shadow duration-200 border-2 border-gray-300 hover:shadow-lg"
                         subtitle="All registered agents" 
                     />
                     <MetricCard 
                         label="Current Active Agents" 
                         value="32" 
-                        className="text-center flex flex-col items-center hover:shadow-lg transition-shadow duration-200 border-2 border-gray-300"
+                        className="flex flex-col items-center text-center transition-shadow duration-200 border-2 border-gray-300 hover:shadow-lg"
                         subtitle="Agents with recent activity"
                     />
                     <MetricCard 
                         label="Current Inactive Agents" 
                         value="0" 
-                        className="text-center flex flex-col items-center hover:shadow-lg transition-shadow duration-200 border-2 border-gray-300"
+                        className="flex flex-col items-center text-center transition-shadow duration-200 border-2 border-gray-300 hover:shadow-lg"
                         subtitle="No recent activity"
                     />
                     <MetricCard 
                         label="# Offices" 
                         value="1" 
-                        className="text-center flex flex-col items-center hover:shadow-lg transition-shadow duration-200 border-2 border-gray-300"
+                        className="flex flex-col items-center text-center transition-shadow duration-200 border-2 border-gray-300 hover:shadow-lg"
                         subtitle="Physical locations"
                     />
                 </div>
@@ -344,42 +344,42 @@ const BrokerageDashboard = () => {
 
             {/* Market Performance Metrics */}
             <div className="grid grid-cols-2 gap-6">
-                <Section title={<span className="font-bold text-xl">Sold to List Price Ratio Change (%)</span>} className="bg-gray-50 border-2 border-gray-400 hover:shadow-lg transition-shadow duration-200">
-                    <div className="grid grid-cols-3 gap-6 text-center p-4">
-                        <div className="bg-white rounded-lg p-4 border-2 border-gray-300">
-                            <h1 className="text-lg font-medium text-gray-800 mb-2">All Sides</h1>
-                            <div className="text-sm text-gray-600 mb-2">Year over Year</div>
+                <Section title={<span className="text-xl font-bold">Sold to List Price Ratio Change (%)</span>} className="transition-shadow duration-200 border-2 border-gray-400 bg-gray-50 hover:shadow-lg">
+                    <div className="grid grid-cols-3 gap-6 p-4 text-center">
+                        <div className="p-4 bg-white border-2 border-gray-300 rounded-lg">
+                            <h1 className="mb-2 text-lg font-medium text-gray-800">All Sides</h1>
+                            <div className="mb-2 text-sm text-gray-600">Year over Year</div>
                             <div className="text-2xl font-bold text-green-600">+5.6%</div>
                         </div>
-                        <div className="bg-white rounded-lg p-4 border-2 border-gray-300">
-                            <div className="text-lg font-medium text-gray-800 mb-2">Buy Side</div>
-                            <div className="text-sm text-gray-600 mb-2">Previous vs Current</div>
+                        <div className="p-4 bg-white border-2 border-gray-300 rounded-lg">
+                            <div className="mb-2 text-lg font-medium text-gray-800">Buy Side</div>
+                            <div className="mb-2 text-sm text-gray-600">Previous vs Current</div>
                             <div className="text-2xl font-bold text-green-600">+4.9%</div>
                         </div>
-                        <div className="bg-white rounded-lg p-4 border-2 border-gray-300">
-                            <div className="text-lg font-medium text-gray-800 mb-2">Buy Side</div>
-                            <div className="text-sm text-gray-600 mb-2">Target vs Actual</div>
+                        <div className="p-4 bg-white border-2 border-gray-300 rounded-lg">
+                            <div className="mb-2 text-lg font-medium text-gray-800">Buy Side</div>
+                            <div className="mb-2 text-sm text-gray-600">Target vs Actual</div>
                             <div className="text-2xl font-bold text-green-600">+6.0%</div>
                         </div>
                     </div>
                 </Section>
-                <Section title={<span className="font-bold text-xl">Avg. Days on Market (List to Close)</span>} className="bg-gray-50 border-2 border-gray-400 hover:shadow-lg transition-shadow duration-200">
-                    <div className="grid grid-cols-3 gap-6 text-center p-4">
-                        <div className="bg-white rounded-lg p-4 border-2 border-gray-300">
-                            <div className="text-lg font-medium text-gray-800 mb-2">All Sides</div>
-                            <div className="text-sm text-gray-600 mb-2">Current</div>
+                <Section title={<span className="text-xl font-bold">Avg. Days on Market (List to Close)</span>} className="transition-shadow duration-200 border-2 border-gray-400 bg-gray-50 hover:shadow-lg">
+                    <div className="grid grid-cols-3 gap-6 p-4 text-center">
+                        <div className="p-4 bg-white border-2 border-gray-300 rounded-lg">
+                            <div className="mb-2 text-lg font-medium text-gray-800">All Sides</div>
+                            <div className="mb-2 text-sm text-gray-600">Current</div>
                             <div className="text-2xl font-bold text-blue-600">175</div>
                             <div className="text-sm text-gray-500">days</div>
                         </div>
-                        <div className="bg-white rounded-lg p-4 border-2 border-gray-300">
-                            <div className="text-lg font-medium text-gray-800 mb-2">Buy Side</div>
-                            <div className="text-sm text-gray-600 mb-2">Previous vs Current</div>
+                        <div className="p-4 bg-white border-2 border-gray-300 rounded-lg">
+                            <div className="mb-2 text-lg font-medium text-gray-800">Buy Side</div>
+                            <div className="mb-2 text-sm text-gray-600">Previous vs Current</div>
                             <div className="text-2xl font-bold text-blue-600">134</div>
                             <div className="text-sm text-gray-500">days</div>
                         </div>
-                        <div className="bg-white rounded-lg p-4 border-2 border-gray-300">
-                            <div className="text-lg font-medium text-gray-800 mb-2">Buy Side</div>
-                            <div className="text-sm text-gray-600 mb-2">Target vs Actual</div>
+                        <div className="p-4 bg-white border-2 border-gray-300 rounded-lg">
+                            <div className="mb-2 text-lg font-medium text-gray-800">Buy Side</div>
+                            <div className="mb-2 text-sm text-gray-600">Target vs Actual</div>
                             <div className="text-2xl font-bold text-blue-600">200</div>
                             <div className="text-sm text-gray-500">days</div>
                         </div>
@@ -388,51 +388,51 @@ const BrokerageDashboard = () => {
             </div>
 
             {/* Revenue and Performance */}
-            <Section title={<span className="font-bold text-xl">Estimated Total Org. Revenue</span>} className="bg-gray-50 border-2 border-gray-400 hover:shadow-lg transition-shadow duration-200">
-                <div className="text-center mb-6">
-                    <div className="text-sm text-gray-600 mb-2 bg-white rounded-lg p-2 inline-block border border-gray-300">
+            <Section title={<span className="text-xl font-bold">Estimated Total Org. Revenue</span>} className="transition-shadow duration-200 border-2 border-gray-400 bg-gray-50 hover:shadow-lg">
+                <div className="mb-6 text-center">
+                    <div className="inline-block p-2 mb-2 text-sm text-gray-600 bg-white border border-gray-300 rounded-lg">
                         <span className="font-medium">Revenue Share:</span> 5% overhead + 2.5% brokerage share
                     </div>
-                    <div className="text-4xl font-bold text-green-600 mt-3">$213K</div>
+                    <div className="mt-3 text-4xl font-bold text-green-600">$213K</div>
                 </div>
                 <div className="grid grid-cols-4 gap-6">
                     <MetricCard 
                         label="Monthly Sales" 
                         value="18" 
                         icon="📅"
-                        className="text-center bg-white border-2 border-gray-300 hover:border-gray-400 transition-colors" 
+                        className="text-center transition-colors bg-white border-2 border-gray-300 hover:border-gray-400" 
                     />
                     <MetricCard 
                         label="Weekly Sales" 
                         value="4" 
                         icon="📊"
-                        className="text-center bg-white border-2 border-gray-300 hover:border-gray-400 transition-colors" 
+                        className="text-center transition-colors bg-white border-2 border-gray-300 hover:border-gray-400" 
                     />
                     <MetricCard 
                         label="Daily Sales" 
                         value="~1" 
                         icon="📈"
-                        className="text-center bg-white border-2 border-gray-300 hover:border-gray-400 transition-colors" 
+                        className="text-center transition-colors bg-white border-2 border-gray-300 hover:border-gray-400" 
                     />
                     <MetricCard 
                         label="Deals/Agent" 
                         value="5" 
                         icon="👥"
-                        className="text-center bg-white border-2 border-gray-300 hover:border-gray-400 transition-colors" 
+                        className="text-center transition-colors bg-white border-2 border-gray-300 hover:border-gray-400" 
                     />
                 </div>
             </Section>
 
             {/* Market Rank */}
-            <Section className="text-center text-2xl border-2 border-gray-400">
-                <h4 className="text-2xl font-medium text-center text-3xl mb-2">Market Rank (TTM*)</h4>
-                <div className="text-2xl text-gray-600 mb-6">(Your Company's Rank)</div>
+            <Section className="text-2xl text-center border-2 border-gray-400">
+                <h4 className="mb-2 text-2xl text-3xl font-medium text-center">Market Rank (TTM*)</h4>
+                <div className="mb-6 text-2xl text-gray-600">(Your Company's Rank)</div>
                 <div className="relative inline-block">
-                    <div className="w-32 h-32 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 flex items-center justify-center mx-auto mb-4 border-8 border-yellow-300 shadow-lg">
+                    <div className="flex items-center justify-center w-32 h-32 mx-auto mb-4 border-8 border-yellow-300 rounded-full shadow-lg bg-gradient-to-r from-yellow-400 to-yellow-600">
                         <div className="text-4xl font-bold text-white">18</div>
                     </div>
-                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                        <div className="bg-yellow-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                    <div className="absolute transform -translate-x-1/2 -bottom-2 left-1/2">
+                        <div className="px-4 py-2 text-sm font-semibold text-white bg-yellow-600 rounded-full">
                             Rank
                         </div>
                     </div>
@@ -445,20 +445,20 @@ const BrokerageDashboard = () => {
         <div className="space-y-6">
             {/* Top Metrics */}
             <div className="grid grid-cols-2 gap-6">
-                <Section className="text-center bg-gradient-to-br from-blue-50 to-white border-2 border-gray-300 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-1">
+                <Section className="text-center transition-all duration-300 transform border-2 border-gray-300 bg-gradient-to-br from-blue-50 to-white hover:border-blue-400 hover:-translate-y-1">
                     <div className="flex items-center justify-center mb-3">
-                        <span className="text-2xl mr-2">💰</span>
+                        <span className="mr-2 text-2xl">💰</span>
                         <h3 className="text-xl font-semibold">Average Listing Price</h3>
                     </div>
-                    <div className="text-sm text-gray-600 mb-3">Per Square Foot</div>
+                    <div className="mb-3 text-sm text-gray-600">Per Square Foot</div>
                     <div className="text-4xl font-bold text-blue-600">$379</div>
                 </Section>
-                <Section className="text-center bg-gradient-to-br from-green-50 to-white border-2 border-gray-300 hover:border-green-400 transition-all duration-300 transform hover:-translate-y-1">
+                <Section className="text-center transition-all duration-300 transform border-2 border-gray-300 bg-gradient-to-br from-green-50 to-white hover:border-green-400 hover:-translate-y-1">
                     <div className="flex items-center justify-center mb-3">
-                        <span className="text-2xl mr-2">👥</span>
+                        <span className="mr-2 text-2xl">👥</span>
                         <h3 className="text-xl font-semibold">Active Agents</h3>
                     </div>
-                    <div className="text-sm text-gray-600 mb-3">(Minimum 1 Deal Completed)</div>
+                    <div className="mb-3 text-sm text-gray-600">(Minimum 1 Deal Completed)</div>
                     <div className="text-4xl font-bold text-green-600">2,504</div>
                 </Section>
             </div>
@@ -469,30 +469,30 @@ const BrokerageDashboard = () => {
                     icon="📌" 
                     label="# Closed" 
                     value="6,573" 
-                    className="text-center bg-gradient-to-br from-blue-50 to-white border-2 border-gray-300 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-md"
+                    className="text-center transition-all duration-300 transform border-2 border-gray-300 shadow-sm bg-gradient-to-br from-blue-50 to-white hover:border-blue-400 hover:-translate-y-1 hover:shadow-md"
                 />
                 <MetricCard 
                     icon="🏆" 
                     label="# Pending" 
                     value="3,215"
-                    className="text-center bg-gradient-to-br from-green-50 to-white border-2 border-gray-300 hover:border-green-400 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-md"
+                    className="text-center transition-all duration-300 transform border-2 border-gray-300 shadow-sm bg-gradient-to-br from-green-50 to-white hover:border-green-400 hover:-translate-y-1 hover:shadow-md"
                 />
                 <MetricCard 
                     icon="📍" 
                     label="# Active" 
                     value="3,606"
-                    className="text-center bg-gradient-to-br from-yellow-50 to-white border-2 border-gray-300 hover:border-yellow-400 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-md"
+                    className="text-center transition-all duration-300 transform border-2 border-gray-300 shadow-sm bg-gradient-to-br from-yellow-50 to-white hover:border-yellow-400 hover:-translate-y-1 hover:shadow-md"
                 />
-                <div className="bg-gradient-to-br from-purple-50 to-white rounded-lg p-4 border-2 border-gray-300 hover:border-purple-400 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-md text-center">
+                <div className="p-4 text-center transition-all duration-300 transform border-2 border-gray-300 rounded-lg shadow-sm bg-gradient-to-br from-purple-50 to-white hover:border-purple-400 hover:-translate-y-1 hover:shadow-md">
                     <div className="flex items-center justify-center mb-2">
-                        <span className="text-xl mr-2">💰</span>
+                        <span className="mr-2 text-xl">💰</span>
                         <span className="text-sm font-medium">Property Price Market Median</span>
                     </div>
                     <div className="text-2xl font-bold text-purple-600">$138K</div>
                 </div>
-                <div className="bg-gradient-to-br from-pink-50 to-white rounded-lg p-4 border-2 border-gray-300 hover:border-pink-400 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-md text-center">
+                <div className="p-4 text-center transition-all duration-300 transform border-2 border-gray-300 rounded-lg shadow-sm bg-gradient-to-br from-pink-50 to-white hover:border-pink-400 hover:-translate-y-1 hover:shadow-md">
                     <div className="flex items-center justify-center mb-2">
-                        <span className="text-xl mr-2">⏱️</span>
+                        <span className="mr-2 text-xl">⏱️</span>
                         <div className="text-sm font-medium text-gray-600">Gross Commission</div>
                     </div>
                     <div className="flex items-center justify-center mb-2">
@@ -507,37 +507,37 @@ const BrokerageDashboard = () => {
                     icon="👥"
                     label="Multiple-Agent Deal (Seller)" 
                     value="14%" 
-                    className="text-center bg-gradient-to-br from-indigo-50 to-white border-2 border-gray-300 hover:border-indigo-400 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-md"
+                    className="text-center transition-all duration-300 transform border-2 border-gray-300 shadow-sm bg-gradient-to-br from-indigo-50 to-white hover:border-indigo-400 hover:-translate-y-1 hover:shadow-md"
                 />
                 <MetricCard 
                     icon="👥"
                     label="Multiple-Agent Deal (Buyer)" 
                     value="6%" 
-                    className="text-center bg-gradient-to-br from-blue-50 to-white border-2 border-gray-300 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-md"
+                    className="text-center transition-all duration-300 transform border-2 border-gray-300 shadow-sm bg-gradient-to-br from-blue-50 to-white hover:border-blue-400 hover:-translate-y-1 hover:shadow-md"
                 />
                 <MetricCard 
                     icon="🤝"
                     label="Dual (Buyer, Seller)" 
                     value="14%" 
-                    className="text-center bg-gradient-to-br from-purple-50 to-white border-2 border-gray-300 hover:border-purple-400 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-md"
+                    className="text-center transition-all duration-300 transform border-2 border-gray-300 shadow-sm bg-gradient-to-br from-purple-50 to-white hover:border-purple-400 hover:-translate-y-1 hover:shadow-md"
                 />
                 <MetricCard 
                     icon="👤"
                     label="Single Agent Deal (Seller)" 
                     value="86%" 
-                    className="text-center bg-gradient-to-br from-green-50 to-white border-2 border-gray-300 hover:border-green-400 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-md"
+                    className="text-center transition-all duration-300 transform border-2 border-gray-300 shadow-sm bg-gradient-to-br from-green-50 to-white hover:border-green-400 hover:-translate-y-1 hover:shadow-md"
                 />
                 <MetricCard 
                     icon="👤"
                     label="Single Agent Deal (Buyer)" 
                     value="94%" 
-                    className="text-center bg-gradient-to-br from-emerald-50 to-white border-2 border-gray-300 hover:border-emerald-400 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-md"
+                    className="text-center transition-all duration-300 transform border-2 border-gray-300 shadow-sm bg-gradient-to-br from-emerald-50 to-white hover:border-emerald-400 hover:-translate-y-1 hover:shadow-md"
                 />
             </div>
 
             {/* Property Listing Status Distribution */}
             <Section className='border-2 border-gray-400'>
-                <h4 className="text-2xl font-medium text-center text-3xl mb-2">Distribution of Property Listing Status</h4>
+                <h4 className="mb-2 text-2xl text-3xl font-medium text-center">Distribution of Property Listing Status</h4>
                 <CustomPieChart
                     size={350}
                     showCenter={true}
@@ -558,9 +558,9 @@ const BrokerageDashboard = () => {
 
         return (
             <div className="min-h-screen bg-gray-50">
-                <div className="max-w-7xl mx-auto px-4 py-6">
+                <div className="px-4 py-6 mx-auto max-w-7xl">
                     {/* Header */}
-                    <h1 className="text-2xl font-bold text-gray-800 text-4xl   text-center mb-2">
+                    <h1 className="mb-2 text-2xl text-4xl font-bold text-center text-gray-800">
                         Brokerage Dashboard: <span className="text-orange-700">Sterling Real Estate Group</span>
                     </h1>
 
@@ -570,7 +570,7 @@ const BrokerageDashboard = () => {
                     {currentPage === 3 && renderPage3()}
 
                 {/* Footer Pagination */}
-                <div className="flex justify-between items-center mt-8 mb-3">
+                <div className="flex items-center justify-between mt-8 mb-3">
                     <button
                         onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                         disabled={currentPage === 1}
@@ -582,7 +582,7 @@ const BrokerageDashboard = () => {
                         Previous
                     </button>
 
-                    <span className="text-gray-600 font-medium">
+                    <span className="font-medium text-gray-600">
                         Page {currentPage} of 3
                     </span>
 

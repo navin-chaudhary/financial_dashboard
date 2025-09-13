@@ -89,6 +89,7 @@ const EditableNumber = ({
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
         className={`editable-number ${className}`}
+        style={{ width: `${Math.max(tempValue.length * 10, 120)}px` }}
         step={decimals > 0 ? `0.${'0'.repeat(decimals - 1)}1` : '1'}
       />
     );

@@ -78,7 +78,7 @@ const EditableValue = ({
                 onKeyDown={handleKeyDown}
                 onBlur={handleBlur}
                 className={`${className} border-2 border-blue-500 rounded px-1 bg-blue-50 min-w-0`}
-                style={{ width: `${Math.max(editValue.length * 8, 40)}px` }}
+                style={{ width: `${Math.max(editValue.length * 10, 70)}px` }}
             />
         );
     }
